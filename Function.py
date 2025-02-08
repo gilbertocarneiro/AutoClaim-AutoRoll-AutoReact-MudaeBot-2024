@@ -50,7 +50,7 @@ def simpleRoll():
             cardPower = 0
         if not 'footer' in jsonCard[0]['embeds'][0] or not 'icon_url' in jsonCard[0]['embeds'][0]['footer']:
             print(i,' - '+unclaimed+' ---- ',cardPower,' - '+cardName+' - '+cardSeries)
-            if cardSeries in Vars.desiredSeries:
+            if cardSeries in Vars.desiredSeries or cardPower >= Vars.minKakeraCard:
                 print('Trying to Claim '+ cardName)
                 r= requests.put(f'https://discord.com/api/v8/channels/{Vars.channelId}/messages/{idMessage}/reactions/{emoji}/%40me',headers=auth)
         else: 
